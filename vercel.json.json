@@ -4,6 +4,23 @@
     { "src": "index.html", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
+    {
+      "src": "/Build/(.*)\\.js\\.gz",
+      "headers": { "Content-Encoding": "gzip" },
+      "dest": "/Build/$1.js.gz"
+    },
+    {
+      "src": "/Build/(.*)\\.wasm\\.gz",
+      "headers": { "Content-Encoding": "gzip" },
+      "dest": "/Build/$1.wasm.gz"
+    },
+    {
+      "src": "/Build/(.*)\\.data\\.gz",
+      "headers": { "Content-Encoding": "gzip" },
+      "dest": "/Build/$1.data.gz"
+    },
+    {
+      "src": "/(.*)", "dest": "/index.html"
+    }
   ]
 }
